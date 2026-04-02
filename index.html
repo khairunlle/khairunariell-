@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Syafiqa Khairunnisa — Rose & Serenity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(145deg, #fff9f7 0%, #fdf4f2 100%);
+            color: #2e2c2a;
+            line-height: 1.5;
+            transition: background 0.3s, color 0.3s;
+            scroll-behavior: smooth;
+        }
+
+        body.dark {
+            background: #1e1b28;
+            color: #ece4dc;
+        }
+
+        body.dark .card,
+        body.dark .sticky-note,
+        body.dark .polaroid,
+        body.dark .quote-card,
+        body.dark .info-card,
+        body.dark .poem-card {
+            background: #2a2538;
+            color: #f3e9e0;
+            border-color: #5a4a6e;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark .skill-chip {
+            background: #3e3652;
+            color: #f7cfd0;
+        }
+
+        body.dark .subhead {
+            background: #312b42;
+            color: #f3cecf;
+        }
+
+        body.dark .contact-item {
+            background: #342d44;
+            color: #ffe8e0;
+            border-color: #7c6c92;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1.5rem 2rem;
+        }
+
+        .polaroid {
+            background: #fffcf9;
+            padding: 1rem 1rem 1.5rem 1rem;
+            width: 240px;
+            margin: 0 auto 1rem;
+            transform: rotate(0.8deg);
+            box-shadow: 18px 18px 30px rgba(146, 168, 209, 0.15);
+            transition: all 0.3s ease;
+            border-radius: 16px 16px 28px 28px;
+            border: 1px solid #f7cac9;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.02);
+            box-shadow: 0 20px 30px rgba(247, 202, 201, 0.3);
+        }
+
+        .polaroid-img {
+            width: 100%;
+            height: 210px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 12px;
+            background-image: url('https://drive.google.com/uc?export=view&id=1LLqFcNqre2PRl9wtFdoVgF_1GTrahuqx');
+        }
+
+        .polaroid-caption {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            color: #92a8d1;
+            font-weight: 500;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.7rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #c48784, #7f9bc2);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        body.dark .hero h1 {
+            background: linear-gradient(135deg, #f3b7b5, #b7c9e8);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .subhead {
+            font-size: 0.9rem;
+            font-weight: 500;
+            background: #f7cac980;
+            backdrop-filter: blur(2px);
+            display: inline-block;
+            padding: 0.3rem 1.5rem;
+            border-radius: 60px;
+            margin-top: 8px;
+            color: #6d5c6c;
+        }
+
+        .card {
+            background: #ffffffcc;
+            border-radius: 32px;
+            padding: 1.6rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 12px 24px -10px rgba(146, 168, 209, 0.1);
+            border: 1px solid #f7cac966;
+            transition: all 0.2s;
+        }
+
+        .sticky-note {
+            background: #fef7f0;
+            border-left: 8px solid #92a8d1;
+            border-radius: 24px;
+            padding: 1.6rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.98rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+        }
+
+        body.dark .sticky-note {
+            background: #2d2740;
+            border-left-color: #f7cac9;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: #fffffffa;
+            border-radius: 28px;
+            padding: 1.4rem;
+            border: 1px solid #f7cac9;
+        }
+
+        .info-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #9b7a8a;
+        }
+
+        body.dark .info-card h3 {
+            color: #f3c2c1;
+        }
+
+        .education-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .education-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .education-list li i {
+            width: 24px;
+            color: #92a8d1;
+            font-size: 1rem;
+            margin-top: 3px;
+        }
+
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .skill-chip {
+            background: #f7e9e7;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #6c5252;
+            border: 0.5px solid #f7cac9;
+        }
+
+        .poem-card {
+            background: #fef2ef;
+            border-radius: 48px 24px 48px 24px;
+            padding: 2rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            box-shadow: 0 18px 28px rgba(146, 168, 209, 0.1);
+        }
+
+        .poem-card p {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-style: italic;
+            white-space: pre-line;
+        }
+
+        .quote-card {
+            background: #eef3fc;
+            border-radius: 30px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1.2rem 0;
+            border: 1px solid #92a8d1;
+        }
+
+        body.dark .quote-card {
+            background: #2f2845;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background: #92a8d1;
+            border: none;
+            border-radius: 60px;
+            padding: 10px 18px;
+            color: #2e2c2a;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 99;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .theme-toggle i {
+            margin-right: 6px;
+        }
+
+        body.dark .theme-toggle {
+            background: #f7cac9;
+            color: #2b2b2b;
+        }
+
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            color: #5f4b5c;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            border: 1px solid #f7cac9;
+            transition: 0.2s;
+        }
+
+        .contact-item:hover {
+            background: #f7cac9;
+            color: #2d2b2a;
+            transform: translateY(-3px);
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.7rem;
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+
+        hr {
+            margin: 0.8rem 0;
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #f7cac9, #92a8d1, transparent);
+        }
+
+        @media (max-width: 680px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> Night & Poetry</button>
+    <div class="container">
+        <div class="hero">
+            <div class="polaroid">
+                <div class="polaroid-img" id="avatarPreview"></div>
+                <div class="polaroid-caption">🌷 Syafiqa · pencari makna dalam sunyi</div>
+            </div>
+            <h1>Syafiqa Khairunnisa</h1>
+            <div class="subhead">✎ calon pemilik toko buku</div>
+        </div>
+
+        <div class="sticky-note">
+            <i class="fas fa-feather-alt" style="margin-right: 10px; color:#92a8d1;"></i> 
+            <strong>— Tentang diriku —</strong><br><br>
+            Lahir di Cilacap, 6 Mei 2010 — saat hujan mulai reda dan senja sedang belajar pulang. 
+            Kini duduk di bangku <strong>SMK Komputama Majenang</strong>, tempat aku belajar logika dan kode, 
+            tapi rohku tetap setia pada cerita fiksi yang kutulis diam-diam. 
+            Aku percaya bahwa buku adalah jendela, dan kelak aku ingin punya <strong>toko buku sendiri</strong> — 
+            tempat semua orang bisa masuk tanpa perlu cek harga. 
+            Aku bukan anak yang sempurna. Aku suka menunda, terlalu peduli omongan orang, dan sering meragukan diriku sendiri. 
+            Tapi aku juga sedang belajar — pelan-pelan — bahwa perubahan tidak selalu harus dramatis. 
+            Cukup dimulai dari satu langkah kecil hari ini. 
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h3><i class="fas fa-graduation-cap"></i> Riwayat Pendidikan</h3>
+                <ul class="education-list">
+                    <li><i class="fas fa-school"></i> <strong>SMK Komputama Majenang</strong> (Sekarang)</li>
+                    <li><i class="fas fa-school"></i> <strong>MTs Negeri 1 Cilacap</strong></li>
+                    <li><i class="fas fa-school"></i> <strong>SD Negeri Pahonjean 03</strong></li>
+                </ul>
+                <hr>
+                <div class="chip-container">
+                    <span class="skill-chip"><i class="fas fa-laptop-code"></i> Teknik Jaringan Komputer dan Telekomunikasi</span>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3><i class="fas fa-heart"></i> Hobi & Kesukaan</h3>
+                <div class="chip-container">
+                    <span class="skill-chip"><i class="fas fa-book"></i> Membaca</span>
+                    <span class="skill-chip"><i class="fas fa-pen-fancy"></i> Nulis cerita</span>
+                    <span class="skill-chip"><i class="fas fa-utensils"></i> Mi ayam pedas</span>
+                    <span class="skill-chip"><i class="fas fa-music"></i> Jangan Paksa Rindu</span>
+                    <span class="skill-chip"><i class="fab fa-youtube"></i> Going Seventeen, Nadia Omara</span>
+                </div>
+                <p style="margin-top: 14px;"><i class="fas fa-map-marker-alt"></i> Cilacap, Pahonjean</p>
+                <p><i class="fas fa-birthday-cake"></i> 6 Mei 2010</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="font-family: 'Playfair Display'; display: flex; gap: 10px; color:#92a8d1;"><i class="fas fa-store"></i> Mimpi Besar: Toko Buku Rakyat</h3>
+            <p style="font-size: 1rem;">Aku ingin membangun toko buku, yang semua buku ada disitu, dan yang pasti harganya murah, terjangkau. Tempat nyaman untuk semua kalangan, tanpa terkecuali. Setiap rak adalah cerita yang menunggu pemiliknya.</p>
+        </div>
+
+        <div class="sticky-note" style="background:#fcf5f0; transform: rotate(-0.2deg);">
+            <i class="fas fa-spa" style="color:#92a8d1;"></i> <strong> Yang ingin aku ubah dari diriku</strong><br>
+            💭 menunda-nunda pekerjaan <br>
+            💭 terlalu memikirkan perkataan orang lain <br>
+            💭 meragukan kemampuan diri sendiri <br><br>
+            <span style="font-size:0.85rem;">Terlihat sederhana, seolah hanya butuh niat untuk mengubahnya. Namun, saat semuanya telah menjadi kebiasaan, ia tumbuh perlahan, mengakar tanpa terasa. Dan pada akhirnya, yang tersisa bukan lagi sekadar kebiasaan — melainkan bagian dari diri yang sulit dilepaskan.</span>
+        </div>
+
+        <div class="poem-card">
+            <i class="fas fa-feather-alt" style="font-size: 1.6rem; color:#f7cac9;"></i>
+            <p>
+            Di antara detik yang tak pernah meminta izin,<br>
+            aku belajar menjadi sunyi yang utuh—<br>
+            tidak lagi mengejar arti,<br>
+            hanya berjalan,<br>
+            bersama waktu<br>
+            yang diam-diam mengubah segalanya.<br>
+            <span style="font-family: 'Poppins'; font-size: 0.7rem;">— Syafiqa</span>
+            </p>
+        </div>
+
+        <div class="quote-card">
+            <i class="fas fa-quote-left" style="margin-right: 8px; color:#f7cac9;"></i>
+            <div class="quote-text" style="font-family: 'Poppins'; font-weight: 400;">“Hidup adalah rangkaian tanda tanya yang tak pernah selesai, dan kita hanyalah jawaban-jawaban yang terus berubah.”<br> — Pramoedya Ananta Toer</div>
+        </div>
+
+        <div class="card" style="text-align: center;">
+            <h3 style="font-family: 'Playfair Display';"><i class="fas fa-paper-plane"></i> Tersambung dalam cerita</h3>
+            <div class="contact-flex">
+                <a href="mailto:fiqaaa4@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> fiqaaa4@gmail.com</a>
+                <a href="https://instagram.com/airunlle" target="_blank" class="contact-item"><i class="fab fa-instagram"></i> @airunlle</a>
+                <a href="https://wa.me/6287884535121" target="_blank" class="contact-item"><i class="fab fa-whatsapp"></i> +62 878-8453-5121</a>
+                <a href="#" id="locPin" class="contact-item"><i class="fas fa-map-pin"></i> Cilacap, Pahonjean</a>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.8rem;"> “Suatu hari, toko bukumu akan menjadi rumah bagi mimpi-mimpi lain.”</p>
+        </div>
+
+        <div class="footer-note">
+            <i class="far fa-copyright"></i> 2025 — Syafiqa Khairunnisa | dengan warna Rose Quartz & Serenity, untuk mimpi toko buku dan cerita fiksi yang tak pernah usai.
+        </div>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('darkModeToggle');
+        const body = document.body;
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark');
+            if (body.classList.contains('dark')) {
+                toggleBtn.innerHTML = '<i class="fas fa-sun"></i> Fajar & Puisi';
+            } else {
+                toggleBtn.innerHTML = '<i class="fas fa-moon"></i> Night & Poetry';
+            }
+        });
+
+        const pinBtn = document.getElementById('locPin');
+        if(pinBtn) {
+            pinBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert("📍 Pahonjean, Cilacap — tempat matahari terbit di antara mimpi dan rak buku kelak.");
+            });
+        }
+        console.log("✨ Web profil Syafiqa — jurusan Teknik Jaringan Komputer dan Telekomunikasi");
+    </script>
+</body>
+</html>
